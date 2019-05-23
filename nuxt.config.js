@@ -28,7 +28,6 @@ export default {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css',
     '@/assets/css/main.css',
   ],
 
@@ -36,7 +35,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui',
     '@/plugins/axios'
   ],
 
@@ -46,6 +44,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // Doc: https://bootstrap-vue.js.org/docs/
+    'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
   ],
   /*
