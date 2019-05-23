@@ -21,7 +21,7 @@
         >GitHub</a>
       </div>
 
-      <el-button v-on:click='fetchSomething'></el-button>
+      <el-button v-on:click='fetchSomething'> Get Data</el-button>
     </div>
   </section>
 </template>
