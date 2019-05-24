@@ -7,13 +7,13 @@
 
       <b-collapse id="nav-collapse-top" is-nav>
         <b-navbar-nav>
-          <b-nav-item :to="'/' + locate + '/about'">Link</b-nav-item>
+          <b-nav-item to="/about">Link</b-nav-item>
            <b-nav-item-dropdown >
              <template slot="button-content">
-               <img src="http://lorempixel.com/25/15/abstract/"> {{locate}} 
+               <img :src="flat" height="12" width="18" :alt="locate" > {{locate}} 
               </template>
               <b-dropdown-item v-for="locate in locates" v-bind:key="locate" v-on:click="setLang(locate)"> 
-                <img src="http://lorempixel.com/25/15/abstract/">
+                <img :src="flat" height="12" width="18" :alt="locate">
                 {{ locate }}
               </b-dropdown-item>
           </b-nav-item-dropdown>
@@ -81,10 +81,16 @@ export default {
   components: {
     HeaderSticky
   },
+  data() {
+    return {
+      flat: this.$t('images.flat')
+    }
+  },
   computed: {
     ...mapGetters({
         locates: 'getLocates',
         locate: 'getLocate',
+        defaultLocale: 'defaultLocale',
     })
   },
   mounted() {
@@ -99,8 +105,24 @@ export default {
   },
   watch: {
     locate(newValue, oldValue) {
-      let newRoute = this.$router.history.current.fullPath.replace(new RegExp('^/'+oldValue), '/' + newValue)
-      this.$router.push(newRoute)
+      let currentPath = this.$router.history.current.fullPath;
+      if(newValue === this.defaultLocale) {
+        currentPath = currentPath.substring(3, currentPath.length);
+      }
+      else
+      {
+        let locale = currentPath.substring(1, 3);
+        if(this.locates.includes(locale)){
+          currentPath =  '/' + newValue + currentPath.substring(3, currentPath.length);
+        }
+        else
+        {
+          currentPath = '/' + newValue + currentPath
+        }
+        
+      }
+      //let newRoute = this.$router.history.current.fullPath.replace(new RegExp('^/'+oldValue), '/' + newValue)
+      this.$router.push(currentPath)
     }
   }
 }

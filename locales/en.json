@@ -9,5 +9,8 @@
     "about": {
       "title": "About",
       "introduction": "..."
+    },
+    "images": {
+      "flat": "http://vimoshop.net/wp-content/plugins/polylang/flags/us.png"
     }
   }

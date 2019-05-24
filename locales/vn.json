@@ -9,5 +9,8 @@
     "about": {
       "title": "Thông Tin",
       "introduction": "..."
+    },
+    "images": {
+      "flat": "http://vimoshop.net/wp-content/plugins/polylang/flags/vn.png"
     }
   }

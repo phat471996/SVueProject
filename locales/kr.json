@@ -3,11 +3,14 @@
       "home": "Home"
     },
     "home": {
-      "title": "Welcome",
-      "introduction": "This is an introduction in English."
+      "title": "환영",
+      "introduction": "한국 소개"
     },
     "about": {
-      "title": "About",
+      "title": "약",
       "introduction": "..."
+    },
+    "images": {
+      "flat": "http://vimoshop.net/wp-content/plugins/polylang/flags/kr.png"
     }
   }

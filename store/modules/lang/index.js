@@ -5,7 +5,8 @@ import mutations from './mutations';
 const defaultState = {
   locales: ['en', 'vn', 'kr'],
   locale: 'en',
-  counter: 0
+  counter: 0,
+  defaultLocale: 'en'
 }
 
 const inBrowser = typeof window !== 'undefined';
