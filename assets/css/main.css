@@ -8,6 +8,40 @@ body {
     margin: 0;
 }
 
+.form-search {
+    min-width: 50%;
+}
+
+.input-search {
+    min-width: 80%;
+}
+
+.input-search::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:   white;
+}
+.input-search:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:   white;
+   opacity:  1;
+}
+.input-search::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:   white;
+   opacity:  1;
+}
+.input-search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:  white;
+}
+.input-search::-ms-input-placeholder { /* Microsoft Edge */
+   color:  white;
+}
+
+.input-search::placeholder { /* Most modern browsers support this now. */
+   color:  white;
+}
+
+
+
+
+
 #notfound {
     position: relative;
     height: 100vh;

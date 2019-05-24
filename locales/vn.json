@@ -1,0 +1,13 @@
+{
+    "links": {
+      "home": "Home"
+    },
+    "home": {
+      "title": "Trang Chủ",
+      "introduction": "Đây là trang tiếng Việt."
+    },
+    "about": {
+      "title": "Thông Tin",
+      "introduction": "..."
+    }
+  }

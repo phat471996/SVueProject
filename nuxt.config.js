@@ -11,12 +11,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      {'http-equiv': 'X-UA-Compatible', content: 'IE=edge'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700,900'}
-    ]
+    ],
   },
 
   /*
@@ -35,7 +36,9 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/axios'
+    '@/plugins/axios',
+    '@/plugins/directives',
+    '@/plugins/i18n'
   ],
 
   /*
@@ -55,12 +58,16 @@ export default {
     
   },
 
+  router: {              // customize nuxt.js router (vue-router).
+    middleware: 'i18n'   // middleware all pages of the application
+  },
+
   /*
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
-    
+    transpile: [],
+    vendor: ['vue-i18n'],
     /*
     ** You can extend webpack config here
     */
