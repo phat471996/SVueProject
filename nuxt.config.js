@@ -1,5 +1,6 @@
 import pkg from './package'
-
+require('dotenv').config()
+console.log(process.env.HOST)
 export default {
   mode: 'spa',
 
@@ -73,5 +74,9 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  server: {
+    port: process.env.PORT, // default: 3000
+    host: process.env.HOST, // default: localhost
+  },
 }
