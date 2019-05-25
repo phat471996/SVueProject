@@ -1,6 +1,7 @@
 {
     "links": {
-      "home": "Home"
+      "home": "Home",
+      "checkOrder": "Check Order"
     },
     "home": {
       "title": "Welcome",

@@ -1,6 +1,7 @@
 {
     "links": {
-      "home": "Home"
+      "home": "Home",
+      "checkOrder": "Kiểm tra đơn hàng"
     },
     "home": {
       "title": "Trang Chủ",
