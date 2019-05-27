@@ -6,24 +6,21 @@
                 <b-navbar-nav>
                     <b-nav-item to="/check-order">{{checkOrder}}</b-nav-item>
                     <b-nav-item to="/check-order">Lịch sử mua hàng</b-nav-item>
-                    <li class="nav-item dropdown cursor-pointer" @mouseleave="onMouseOut" @mouseover="onMouseOver">
-                      <div class="nav-link dropdown-toggle">
-                        <img :src="flat" height="12" width="18" :alt="locate" > 
-                        <span class="">{{locate}}</span> 
-                      </div>
-                       <transition name="slide-fade" >
-                          <div v-if="isHover" class="m-dropdown-menu">
-                            <div  class="dropdown-item cursor-pointer"
-                                  v-for="locate in locates.filter(x => {return x != locate })" 
-                                  v-bind:key="locate" 
-                                  v-on:click="setLang(locate)"> 
+                    <b-dropdown-over>
+                        <template slot="title">
+                          <div class="nav-link dropdown-toggle">
+                              <img :src="flat" height="12" width="18" :alt="locate" > 
+                              <span class="">{{locate}}</span> 
+                          </div>
+                        </template>
+                        <b-dropdown-item v-for="locate in locates.filter(x => {return x != locate })" 
+                              v-bind:key="locate" 
+                              v-on:click="setLang(locate)"
+                              >
                                 <img :src="flat" height="12" width="18" :alt="locate">
                                 {{ locate }}
-                            </div>    
-                          </div>
-                        </transition>         
-                    </li>
-                   
+                        </b-dropdown-item>
+                    </b-dropdown-over>
                 </b-navbar-nav>
 
                 <!-- Right aligned nav items -->
@@ -44,12 +41,18 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import BDropdownOver from './BDropdownOver'
 export default {
+  props: {
+    transition: "ssss"
+  },
   data() {
     return {
-      dropup: true,
-      isHover: false
+      dropup: true
     }
+  },
+  components: {
+    BDropdownOver
   },
   computed: {
     ...mapGetters({
@@ -65,25 +68,12 @@ export default {
     } 
   },
   mounted() {
-    // this.$root.$on('bv::dropdown::show', bvEvent => {
-    //   console.log('Dropdown is about to be shown', bvEvent)
-    // })
+    
   },
   methods: {
     ...mapActions({
       setLang: 'setLang'
-    }),
-    onMouseOver(evt) {
-      //this.$refs.langDropdown.classList.add('fade-enter');
-      //this.$refs.langDropdown.classList.add('fade-enter-active');
-      //console.log(this.$refs.langDropdown)
-      this.isHover = true;
-      
-    },
-    onMouseOut(evt) {
-      
-      this.isHover = false;
-    }
+    })
   },
   watch: {
     locate(newValue, oldValue) {
@@ -111,34 +101,5 @@ export default {
 </script>
 
 <style scoped>
-.m-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    float: left;
-    min-width: 10rem;
-    padding: 0.5rem 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0.25rem;
-}
 
-
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateY(10px);
-  opacity: 0;
-}
 </style>

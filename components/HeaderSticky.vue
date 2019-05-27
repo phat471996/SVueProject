@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         OnScroll(){
-        if (window.pageYOffset > this.sticky) {
+        if (window.pageYOffset >= this.sticky) {
             this.$refs.navbarsticky.classList.add("sticky")
         } else {
             this.$refs.navbarsticky.classList.remove("sticky");

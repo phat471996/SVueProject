@@ -13,23 +13,34 @@
                         
                         </b-dropdown-item>
                     </b-nav-item-dropdown>
+                     
                 </b-navbar-nav>
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                    
-                </b-button>
+               
             </b-nav-form>
 
-            <b-button v-b-popover.hover="'I am popover content!'" title="Popover Title">Hover</b-button>
+           <b-dropdown-over>
+                <template slot="title">
+                    <img src="https://banner2.kisspng.com/20180329/fow/kisspng-shopping-cart-software-computer-icons-cart-5abcd0d6d48402.9794554415223236708705.jpg"
+                        height="20" width="20" > 
+                </template>
+                <b-dropdown-item > 
+                    hihi
+                </b-dropdown-item>
+            </b-dropdown-over>
         </b-container>
     </b-navbar>
 </template>
 
 <script>
+import BDropdownOver from './BDropdownOver'
 export default {
     methods: {
         handleSearch: function(evt) {
             console.log(evt)
         }
+    },
+    components: {
+        BDropdownOver
     }
 }
 </script>

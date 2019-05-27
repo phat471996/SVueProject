@@ -1,6 +1,5 @@
 import pkg from './package'
 require('dotenv').config()
-console.log(process.env.HOST)
 export default {
   mode: 'spa',
 
