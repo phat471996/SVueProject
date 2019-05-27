@@ -13,6 +13,12 @@ export default {
   components: {
     AppHeader,
     AppFooter,
+  },
+  mounted(){
+     this.$nextTick(() => {
+          this.$root.$loading.start()
+          setTimeout(() => {this.$root.$loading.finish()}, 10000)
+    })
   }
 }
 </script>

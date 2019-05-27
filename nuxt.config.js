@@ -57,7 +57,7 @@ export default {
   axios: {
     
   },
-
+  loading: '~/components/loading.vue',
   router: {              // customize nuxt.js router (vue-router).
     middleware: 'i18n'   // middleware all pages of the application
   },
