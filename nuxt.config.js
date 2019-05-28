@@ -47,9 +47,9 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/pwa',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    '@nuxtjs/pwa',
   ],
   /*
   ** Axios module configuration
@@ -67,12 +67,34 @@ export default {
   */
   build: {
     transpile: [],
-    vendor: ['vue-i18n'],
+    vendor: [
+      'vue-i18n',
+    ],
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    },
+    analyze: true,
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        automaticNameDelimiter: '.',
+        name: true,
+        cacheGroups: {},
+        minSize: 100000,
+        maxSize: 100000
+      }
+    },
+    maxChunkSize: 100000,
   },
   server: {
     port: process.env.PORT || '3000', // default: 3000
